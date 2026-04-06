@@ -1,7 +1,7 @@
 **SYSTEM INFO**
 uname -a 
 free -h
-duf (table formatted disk usage)
+duf #(table formatted disk usage)
 ncdu <directory name> (directories in decreasing disk usage)
 nc (netcat, investigate sockets)
 du -h --max-depth=1 <filename>
