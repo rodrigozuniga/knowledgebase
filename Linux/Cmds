@@ -1,0 +1,23 @@
+**SYSTEM INFO**
+uname -a 
+free -h
+duf (table formatted disk usage)
+ncdu <directory name> (directories in decreasing disk usage)
+nc (netcat, investigate sockets)
+du -h --max-depth=1 <filename>
+glances (cpu, mem, disk io, other)
+lshw (list of hardware)
+dstats
+systemd-analyze blame (how long an initial process takes to load)
+env (list of environment variables, might be listenv instead of env)
+nmon (menu for CPU, memory, disk, utilization and others)
+  --other--
+cowsay message 
+sl (running train, ls mispelled)
+asciiquarium (aquarium in terminal)
+espeak hello (make computer say hello)
+fortune (random fortune message
+figlet word (display large banner with text/word)
+cmatrix (like the movie)
+hollywood (multiple screens with random output)
+
