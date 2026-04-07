@@ -21,6 +21,17 @@ figlet word   #(display large banner with text/word)
 cmatrix       #(like the movie)
 hollywood     #(multiple screens with random output)
 
+# **DOCUMENTATION**
+whatis <command>
+whereis <command
+man <command>
+man -k <keyword>
+<command> --help
+<command> -h
+info <command>
+info --show-options <command> (show options only)
+apropos <keyword>
+
 
 # **NETWORKS**
 ifconfig
@@ -101,3 +112,43 @@ trap 'command_to_run' EXIT/DEBUG/ERR/1/2/3/9/15/20 #(trap event and run command_
 trap -l                         #(shows all the current traps)
 trap 'echo exiting ' EXIT
 trap 'echo -e "\n cntrl-c"' 2
+
+
+# **PARENTHESES**
+$( )	Command Substitution	Runs command, returns output   | cwd=$(pwd)
+$(( ))	Arithmetic Expansion	Performs math, returns result  | val=$((10/2))
+(( ))	Arithmetic Evaluation	Evaluates logic/math, no output| if ((i<10));
+
+
+# **PIPPING**
+# Variables defined in the main shell are available to all commands in a pipeline (as they run in subshells that inherit the environment
+> (redirect output)
+| (use output/left as input/right) 
+xargs (allows to put output on the right of the pipped to command)
+2>&1 (the >& indicates that both 2/stderr and 1/stdoutput are file descriptors and not filenames)
+echo "scale = 2; (16 + 63) / 5" | bc
+cat <<< filename (passes filename to the standard input for command cat) 
+bc <<< "scale=2; 1/2" (same as above)
+wc <<< $(ls -l)
+
+
+# **TMUX**
+tmux --> <b> + % (for vertical split)
+tmux --> <b> + " (for horizontal split)
+tmux --> <b> + :splitw -v -h -p (-v for vertical, -h for horizontal, -p for % of screen
+tmux --> <b> + alt + <-|-> (resize screen)
+
+
+# **EDITOR**
+pico 
+nano (same as pico)
+vim
+gedit (open interface/gui)
+jed (editor with nice interface)
+open <filename> (open file in xed)
+cat > filename (replace content of filename, end with ^C or ^D)
+cat >> filename (append to content of filename)
+cat <<EOF > <filename>  (EOF is an arbitrary stop signal, could be abc)
+nl <filename> (like cat but returns line numbers too)
+PS1='> ' (change prompt display)
+
