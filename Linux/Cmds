@@ -1,4 +1,4 @@
-**SYSTEM INFO**
+# **SYSTEM INFO**
 uname -a 
 free -h
 duf                       #(table formatted disk usage)
@@ -21,3 +21,83 @@ figlet word   #(display large banner with text/word)
 cmatrix       #(like the movie)
 hollywood     #(multiple screens with random output)
 
+
+# **NETWORKS**
+ifconfig
+ip a
+ping google.com
+traceroute google.com   #(where is the bottle neck in the network)
+mtr -4b --report google.com
+ssh joseops@localhost   #(login into own machine as a different user)
+ssh -X (X11 forwarding; ssh -Y might be more reliable because less security)
+ss                      #(sockets list)
+curl -o <new_package_name> <package url> #(handle significantly more protocols than wget)
+wget https://flaviocopes.pages.dev/books/cli-commands-handbook.pdf (can handle http/s and ftp)
+sudo ufw status         #(firewall status by port)
+iptables                #(filter packages)
+nslooup url             #(check DNS information)
+dig url                 #(check info about domain; dns)
+arp-scan localnet       #(scan for other devices on the same network)
+speedtest-cli           #(test connection speed with ookla)
+fast                    #(test connection with fast.com)
+
+
+# **SHORTCUTS**
+# ^ + alt + T (opens new terminal)
+# ^Z (interrup proces, retake it with jobs and %# with # being job number)
+# ^D (stop/end of information sent to command; logout of current session)
+# ^C (kill running process)
+# ^L (clear screen)
+# ^A (moves cursor to begining of the line)
+# ^E (moves cursosr to end of the line)
+# ^K (deletes from cursor to end of the line)
+# ^U (deletes from cursor to beginning of the line)
+# ^W (deletes word before cursor)
+# !x (previouly run commands that start with x)
+# command !$ (run command with previously used argument/flag)
+# !#:1 + tab (on the line refer to previous argument/flag, like a path to file or mkdir path; 0 refers to the command and 2,3...refers to 2nd or 3rd argument/flag)
+# ls -l /home/rzuniga/Documents/{bash_class,git_class,regex_class} (nesting arguments for a command)
+
+# **SYSTEM FILES & DIRECTORIES**
+# / (Root)
+# /bin  (contains binary executable files)
+# /sbin (similar to bin but for root programs)
+# /etc  (system wide configuration)
+# /dev  (virtual directory with device files for hardware
+# /proc (virtual files generated in real time with kernel and running processe information)
+# /var  (stores variable data that changes frequently during system operation)
+# /tmp  (temporaty storage)
+# /usr  (unix sources resources of user-level applications)
+# /lib  (essential shared libraries)
+# /opt  (for third party software like google chrome)
+# /mnt & /media (mount point for external storage like usb drives and network drives)
+# /boot (files for boot process)
+# /sys (virtual file system with info about hardware and kernel information)
+# /srv  (to store data for services provided by the system like web server data for a site)
+
+
+# **PROCESS MANAGEMENT**
+bg      # check job number with jobs and do bg %<jobnum>
+fg
+jobs 
+ps
+pstree
+top
+sudo iotop -uo rzuniga #(total disk read and disk write on first two lines)
+kill 
+killall
+history                 #(^R for reverse history search)
+alias hgrep='history|grep'
+glances
+time <command>
+PS1='> '
+parallel gzip ::: file1 file2 file3 # (run multiple commands in parallel)
+seq -w 5000|parallel touch pfile{}.txt
+logger "a message"              #(put message in log file; message goes into /var/log/syslog)
+logger -t messageTag "message"  #(add initial tag to a message, helps filtering)
+df -h | logger -t DiskUsage     #(pipe output of another command into logging files)
+nohup <command>                 #(in a remote session to run command even after you logout)
+trap 'command_to_run' EXIT/DEBUG/ERR/1/2/3/9/15/20 #(trap event and run command_to_run)
+trap -l                         #(shows all the current traps)
+trap 'echo exiting ' EXIT
+trap 'echo -e "\n cntrl-c"' 2
