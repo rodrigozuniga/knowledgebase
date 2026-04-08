@@ -141,14 +141,106 @@ tmux --> <b> + alt + <-|-> (resize screen)
 
 # **EDITOR**
 pico 
-nano (same as pico)
+nano  #(same as pico)
 vim
-gedit (open interface/gui)
-jed (editor with nice interface)
-open <filename> (open file in xed)
-cat > filename (replace content of filename, end with ^C or ^D)
-cat >> filename (append to content of filename)
-cat <<EOF > <filename>  (EOF is an arbitrary stop signal, could be abc)
-nl <filename> (like cat but returns line numbers too)
-PS1='> ' (change prompt display)
+gedit                   #(open interface/gui)
+jed                     #(editor with nice interface)
+open <filename>         #(open file in xed)
+cat > filename          #(replace content of filename, end with ^C or ^D)
+cat >> filename         #(append to content of filename)
+cat <<EOF > <filename>  #(EOF is an arbitrary stop signal, could be abc)
+nl <filename>           #(like cat but returns line numbers too)
+PS1='> '                #(change prompt display)
+
+
+**FILE/DIRECTORY MANAGEMENT
+rmdir           #(removes empty directories only)
+dirname         #(gets path without filename, removes last text after last /)
+basename        #(gets filename out of path)
+ls -al
+exa -al
+pwd
+touch
+mdir                    #(displays an mdos directory content)
+ncdu <directory name>   #(directories in decreasing disk usage,can erase files)
+stat <filename>
+ln <filename>  <hard link to file> # (hard link to the file)
+rg -l                   #(rip grep; super search; -l only list files)
+chmod +rwx <filename>   #(add read,write,execute to permissions for all groups)
+chown                   #(change ownership of file)
+pushd <+n> <directory>  #(add to the stack)
+dirs -v                 #(show all paths in stack)
+popd                    #(remove from top of the stack) 
+cmp file1 file2         #(compare files bits, if files are equal it returns nothing)
+locate /home/rzuniga/Documents .pdf
+find . -maxdepth 2 -type f -name "*.pdf"
+split -b [size] [filename] [prefix]   #(split file in smaller files, rejoin files with cat) 
+ranger                                #(cli interface to navigate directories and check and/or delete files)
+
+# **COMPRESSION/ARCHIVE**
+gzip -r archive.zip files
+gunzip <archivename.zip> -d <directory> #(unzip to a certain directory)
+gunzip -l <archive.zip>                 #(list of elements inside a compressed files)
+tar -cf archive.tar files
+tar -tf archive.tar
+tar -xf archive.tar
+tar -zcvf archive_name.tar.gz directory_name/     #(archive and compress full folder)
+rsync -av /path/to/source/ /path/to/destination/  #(-a is recursive to all included dir, -v is verbose and show all copied files)
+split -b [size] [filename] [prefix]
+
+**PACKAGE MANAGEMENT**
+sudo apt <packagename> (remove downloaded files)
+sudo apt update <packagename>
+sudo apt upgrade <packagename>
+apt list --installed
+apt-mark showmanual (show manually installed packages)
+sudo apt-get <packagename>
+sudo snap <package name>  #install snapd not snap
+snap list                 #(list of installed snap packages)
+dpkg --listfiles cowsay   #(check what packages have been installed by cowsay)
+
+# **USER MANAGEMENT**
+id lichiops                     #(returns uid, gid and groups to which the user belongs)
+groups <userid>                 #(list of groups the user is a member)
+sudo passwd <username>          #(change password for username)
+compgen -u                      #(list of usernames)
+cat /etc/passwd                 #(list of usernames and others)
+users                           #(list of logged in users)
+last <username>                 #(last logins of <username>)
+useradd <username> <groupname>  #(create group or add user to a group)
+sudo deluser johndoe developers #(removes user from group or remove user)
+sudo wall "message"
+talk
+write
+
+
+# **DATA/TEXT/DATES MANIPULATION**
+q 'select * from file1.txt'
+tr -s ' ' < lsl.out|cut -d ' ' -f 1-3   #(single blank space, select c1 to c3)
+awk '{print $1 $2}' <filename>
+sed '/rzuniga/d' <filename>             #(delete all lines containing rzuniga)
+sed 's/rzuniga//g' <filename>           #(delete all instances of rzuniga)
+sed -n '/\bq/p' lsl.out                 #(output lines that contain a word starting with q)
+sed -i 's/unix/linux/g' filename.txt    #(replace in place with -i)
+grep "<pattern>" <filename>             #(search for pattern in a file)
+egrep "<pattern>" <filename>            #(same as grep -E for extended regex)
+cat lsl.out|rg '\bq\w*'
+paste col1 col2                         #(join columns from different files)
+seq 1 10|datamash sum 1 mean 1 range 1 count 1
+cat col1 col2 (concatenate col1 and col2)
+cat bygroup.txt|datamash -g 1 sum 2 mean 2 
+datamash -t ' ' transpose < filename > filename.transposed
+datamash -t ',' -H sum Years_Customer < crosstab_data.txt 
+datamash -st ',' -H crosstab Gender,Region sum Age < crosstab_data.txt|column -ts ',' #(only one variable)
+echo $(( ($(date +%s) - $(date --date="1967-06-19" +%s))/86400))
+comm -12 file1 file2                                  #(only lines present in both file1 and file2)
+comm -3  file1 file2                                  #(only lines unique to each file)
+comm -12 <(sort file1) <(sort file2)
+diff -y file1 file2 (get two columns with -y)
+diff  <(sort col1) <(sort col2)
+awk '{print $0,($1<50 ? "low":"high")}' sum_test.txt  #(derive one column from another with if logic)
+ls -l|awk 'BEGIN {print NF,NR} END {print NF,NR}'     #(NF:# of fields, NR: # of records)
+seq 10|awk '{ print $0, ($1 % 2 == 0 ? "Even" : "Odd") }'
+
+
 
