@@ -243,4 +243,111 @@ ls -l|awk 'BEGIN {print NF,NR} END {print NF,NR}'     #(NF:# of fields, NR: # of
 seq 10|awk '{ print $0, ($1 % 2 == 0 ? "Even" : "Odd") }'
 
 
+# **MATH & PROBABILITIES**
+echo "scale = 2; (16 + 63) / 5" | bc
+echo "scale = 3; sqrt(100)|bc -l
+cat <filename>|datamash sum 1 mean 1 range 1 count 1
+seq 1 10|datamash sum 1 mean 1 range 1 count 1 min 1 q1 1 median 1 q3 1 max perc 1 rand 1 
+$RANDOM                       #(generate random between 1 and 32768)
+$SRANDOM                      #(generate random between 1 and 9,999,999,999)
+shuf -i 1-100 -n 1            #(select 1 number out of 1 to 100)
+IFS=+; echo "${arr[*]}" | bc
+awk '{T+=$1} END {print T}' sum_test.txt
+awk 'BEGIN {cummulativeTotal=1000 } { cummulativeTotal += $1; print $1 , cummulativeTotal} END{print "Final Total: " cummulativeTotal}' sum_test.txt #(cummulative sum showing each step)
+gretl                         #(time series package)
+gnu pspp                      #(stats package)
+jamovi                        #(stats package)
+jasp                          #(stats package)
+
+# **FUNCTIONS**
+function <functionname>(){ 
+cmd1 
+cmd2 
+cmd3
+return <value> 
+}
+
+function mkcd() { 
+mkdir $1;
+cd $1; }
+
+
+# **BASH PROGRAMING**
+
+# ---*LOOPS*---
+for i in $(seq 10);do echo $i; done
+
+for ((i=0; i<=10; i++)); do echo "$i"; done
+
+while [ $count -le 5 ]; do 
+echo "$count" 
+((count++))
+done
+
+continue      #(skip following commands for this iteration)
+break         #(exit loop entirely)
+
+ls File*|xargs rm  
+
+echo "${companies[@]}"|xargs -n 1 ping -c 3 #(-n is to pass one argument at a time)
+
+cat filenames|xargs  -I {} sh -c '[ -f "{}" ] && echo "{}" file exist|| echo "{}" does not exist'
+
+echo {1..5}|tr ' ' "\n"|xargs -I {} echo the number is {}
+
+echo {1..5}|xargs -n 1 sh -c 'echo the number is $0'
+
+
+# ---*LOGIC FLOW*---
+((condition ? expr1 : expr2))       #(Ternary operator)
+echo $(( $x == "hello" ? 1: 0 ))
+echo $( [ $((x%3)) -eq 0 ] && echo "it is zero"||echo "it is not zero" )
+
+
+# **READ FROM FILE**
+readarray -t arr < lines.txt
+#!/bin/bash
+
+# Loop through each line of the file
+# IFS: Internal Field Separator
+lineCount=0
+while IFS= read -r line || [[ -n "$line" ]]; do
+  # Place your commands here to process the current line
+  ((lineCounter++))
+  echo "Processing line $lineCounter: $line"
+done < "$FILE"
+
+
+# **OUTPUT TO FILE**
+seq 10|awk '{if ($1 % 2 == 0) {print > "even.txt"} else {print > "odd.txt"}}'
+
+
+# **SCRIPTS**
+
+#!/bin/bash
+#To update package libraries, upgrade packages and remove unneeded packages 
+echo "Updating system packages..."
+echo $1|sudo apt update && sudo apt upgrade -y
+echo "Cleaning up unnecessary packages..."
+sudo apt autoremove -y
+echo "System maintenance complete!"
+
+#!/bin/bash
+# Usage: touch myscript.sh and create file and make it excecutable
+touch "$1"
+chmod +x "$1"
+echo "#!/bin/bash" >> "$1"
+"$EDITOR" "$1" # Opens the new file in your default editor
+
+# **APACHE SERVER**
+sudo systemctl start apache2  # (start, check status and stop apache server)
+127.0.0.1                     # (localhost, port 80 for http and port 443 for https)
+sudo systemctl status apache2
+sudo systemctl stop apache2
+sudo systemctl restart apache2
+cd /var/www/gci               #(for index file)
+cd 
+
+
+
 
