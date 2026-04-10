@@ -1,2 +1,12 @@
-# Knowledgebase: Linux commands, regex, vim, bash, SQLite, Python, GitHub, Containers and Environments
+# Knowledgebase: 
+
+Linux commands,
+vim, 
+bash, 
+regex, 
+SQLite, 
+Python, 
+GitHub, 
+Containers,
+Environments
 
