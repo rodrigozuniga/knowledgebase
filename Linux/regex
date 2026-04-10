@@ -1,10 +1,10 @@
 
-**Test file is included at the end of this file"
+# **Test file is included at the end of this file"
 
-**GREP**
+# **GREP**
 grep -E (to get full regex)
 
-**SPECIAL MATCH CHARACTERS**
+# **SPECIAL MATCH CHARACTERS**
 \b (word boundary - "\bbanana\b)
 \B (non word boundary - "banana\B)
 \w (matches any alphanumeric character - "\bb\w{5,7}\b)
@@ -39,38 +39,38 @@ $ (matches end of a line)
 
   * `.` (Dot): Matches any single character except for a newline
      character.
-   * `^` (Caret):
+  * `^` (Caret):
        * At the beginning of a pattern, it matches the start of a
          line/string.
        * Inside [] (e.g., [^abc]), it negates the character set, matching
          any character not in the set.
-   * `$` (Dollar Sign): Matches the end of a line/string.
-   * `*` (Asterisk): Matches zero or more occurrences of the preceding
+  * `$` (Dollar Sign): Matches the end of a line/string.
+  * `*` (Asterisk): Matches zero or more occurrences of the preceding
      character or group.
-   * `+` (Plus Sign): Matches one or more occurrences of the preceding
+  * `+` (Plus Sign): Matches one or more occurrences of the preceding
      character or group.
-   * `?` (Question Mark):
+  * `?` (Question Mark):
        * Matches zero or one occurrence of the preceding character or
          group.
-       * When placed after *, +, or ? (e.g., .*?), it makes the quantifier
-         "non-greedy" (matching the shortest possible string).
-   * `{n}` (Curly Braces): Matches exactly n occurrences of the preceding
+       * --> When placed after *, +, or ? (e.g., .*?), it makes the quantifier
+         "non-greedy" (matching the shortest possible string). <--
+   *`{n}` (Curly Braces): Matches exactly n occurrences of the preceding
      character or group.
-   * `{n,}`: Matches n or more occurrences.
-   * `{n,m}`: Matches between n and m (inclusive) occurrences.
-   * `()` (Parentheses):
+   *`{n,}`: Matches n or more occurrences.
+   *`{n,m}`: Matches between n and m (inclusive) occurrences.
+   *`()` (Parentheses):
        * Groups multiple characters into a single unit to apply
          quantifiers to the entire group.
        * Creates a "capturing group" to extract matched sub-strings.
-   * `[]` (Square Brackets): Defines a "character set" or "character
+   *`[]` (Square Brackets): Defines a "character set" or "character
      class," matching any one of the characters inside the brackets.
        * [abc] matches 'a', 'b', or 'c'.
        * [a-z] matches any lowercase letter.
        * [0-9] matches any digit.
-   * `|` (Pipe / Vertical Bar): Acts as an "OR" operator, matching either
+   *`|` (Pipe / Vertical Bar): Acts as an "OR" operator, matching either
      the expression before or the expression after it. (e.g., cat|dog
      matches "cat" or "dog").
-   * `\` (Backslash):
+   *`\` (Backslash):
        * Escapes special characters: If you want to match a special
          character literally (e.g., a dot, asterisk, or question mark),
          you must precede it with a backslash (\., \*, \?).
