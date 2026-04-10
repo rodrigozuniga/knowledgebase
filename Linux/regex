@@ -1,0 +1,163 @@
+
+**Test file is included at the end of this file"
+
+**GREP**
+grep -E (to get full regex)
+
+**SPECIAL MATCH CHARACTERS**
+\b (word boundary - "\bbanana\b)
+\B (non word boundary - "banana\B)
+\w (matches any alphanumeric character - "\bb\w{5,7}\b)
+\W (matches any non alphanumeric character)
+\s (matches any whitespace)
+\S (matches any non whitespace)
+\d (matches any digit)
+\D (matches any non digit)
+
+[:alpha:],[:digit:],[:space:] (same as above, can require to be in [] to create a character set)
+
+
+^ (matches start of a line)
+$ (matches end of a line)
+
+. (matches single occurrence of previous character)
+* (matches zero or more occurrences of previous character)
++ (matches one or more occurrences of previous character)
+? (matches zero or one occurrences of previous character)
+
+
+
+{n},{n,},{n,m} (matches a certain number of occurrences of previous character)
+[abc],[a-z],[0-9] (defines character set to be matched)
+| (or logical operator)
+
+() (groups multiple characters into single unit to apply quantifiers to the entiregroup
+
+-----------------------------------------------
+
+**GEMINI**
+
+  * `.` (Dot): Matches any single character except for a newline
+     character.
+   * `^` (Caret):
+       * At the beginning of a pattern, it matches the start of a
+         line/string.
+       * Inside [] (e.g., [^abc]), it negates the character set, matching
+         any character not in the set.
+   * `$` (Dollar Sign): Matches the end of a line/string.
+   * `*` (Asterisk): Matches zero or more occurrences of the preceding
+     character or group.
+   * `+` (Plus Sign): Matches one or more occurrences of the preceding
+     character or group.
+   * `?` (Question Mark):
+       * Matches zero or one occurrence of the preceding character or
+         group.
+       * When placed after *, +, or ? (e.g., .*?), it makes the quantifier
+         "non-greedy" (matching the shortest possible string).
+   * `{n}` (Curly Braces): Matches exactly n occurrences of the preceding
+     character or group.
+   * `{n,}`: Matches n or more occurrences.
+   * `{n,m}`: Matches between n and m (inclusive) occurrences.
+   * `()` (Parentheses):
+       * Groups multiple characters into a single unit to apply
+         quantifiers to the entire group.
+       * Creates a "capturing group" to extract matched sub-strings.
+   * `[]` (Square Brackets): Defines a "character set" or "character
+     class," matching any one of the characters inside the brackets.
+       * [abc] matches 'a', 'b', or 'c'.
+       * [a-z] matches any lowercase letter.
+       * [0-9] matches any digit.
+   * `|` (Pipe / Vertical Bar): Acts as an "OR" operator, matching either
+     the expression before or the expression after it. (e.g., cat|dog
+     matches "cat" or "dog").
+   * `\` (Backslash):
+       * Escapes special characters: If you want to match a special
+         character literally (e.g., a dot, asterisk, or question mark),
+         you must precede it with a backslash (\., \*, \?).
+       * Introduces special character sequences:
+           * \d: Matches any digit (equivalent to [0-9]). \D matches any
+             non-digit.
+           * \w: Matches any "word" character (alphanumeric and
+             underscore, equivalent to [A-Za-z0-9_]). \W matches any
+             non-word character.
+           * \s: Matches any whitespace character (space, tab, newline,
+             etc.). \S matches any non-whitespace character.
+           * \b: Matches a word boundary. \B matches a non-word boundary.
+
+-------------------------------------------------------
+
+**REGEX TEST FILE**
+
+# This file is for learning regular expressions with 'grep'.
+# For most regular expression features, it's recommended to use 'grep -E' (for extended regex).
+
+# --- 1. Literal Matching ---
+# Search for exact strings.
+apple banana orange
+applepie
+pineapple
+banana_split
+
+# --- 2. Anchors (^ and $) ---
+# '^' matches the beginning of a line.
+# '$' matches the end of a line.
+^start_of_line
+This is the end$
+Another line that ends$
+
+# --- 3. Quantifiers (?, *, +, {n}, {n,}, {n,m}) ---
+# '?' matches zero or one occurrence of the preceding character/group.
+# '*' matches zero or more occurrences.
+# '+' matches one or more occurrences.
+# '{n}' matches exactly n occurrences.
+# '{n,}' matches n or more occurrences.
+# '{n,m}' matches between n and m occurrences.
+
+colou?r (matches color and colour)
+Err Error Errror Errorr (try 'Err+or' or 'Err?or')
+a*b (matches b, ab, aab, aaab)
+a+b (matches ab, aab, aaab)
+x.*y (matches x followed by anything, then y)
+Phone number: 123-456-7890 (try '[0-9]{3}-[0-9]{3}-[0-9]{4}')
+Item ID: ABC-1234 (try '[A-Z]{3}-[0-9]{4}')
+
+# --- 4. Character Classes ---
+# '.' matches any single character (except newline).
+# '[abc]' matches any one of the characters a, b, or c.
+# '[^abc]' matches any character NOT a, b, or c.
+# '[a-z]' matches any lowercase letter.
+# '[0-9]' matches any digit.
+# '[:alnum:]' (alphanumeric), '[:alpha:]' (alphabetic), '[:digit:]' (digits), '[:space:]' (whitespace)
+
+The quick brown fox jumps over the lazy dog.
+12345 test @#$!
+email@example.com (try '\w+@\w+\.\w+')
+   leading and trailing spaces   (try '\s+')
+price $100 (try '\$[0-9]+')
+
+# --- 5. Alternation (|) ---
+# '|' acts as an OR operator.
+cat|dog (matches 'cat' or 'dog')
+(apple|orange) juice
+
+# --- 6. Grouping (()) ---
+# Group characters to apply quantifiers or alternation to them.
+(ab)+c (matches abc, ababc, abababc...)
+apple (pie|sauce)
+
+# --- 7. Word Boundaries (\b) ---
+# '\b' matches the empty string at the beginning or end of a word.
+The word test in a sentence.
+testing this out.
+contest for all.
+# Try searching for '\btest\b' vs 'test'.
+
+# --- 8. Escaping Special Characters (\) ---
+# Use '' to match a special regex character literally.
+This costs \$10.00 (matches '$' literally)
+The file is path/to/file.txt (matches '.' literally)
+A question mark\?
+A plus sign\+
+A star\*
+A dot\.
+C:\Program Files\My App\ (matches Windows path literally)
