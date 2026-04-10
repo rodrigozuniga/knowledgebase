@@ -1,9 +1,10 @@
 Vim commands:
 
-esc A		    : go to end of line
+esc ^	        : go to start of the line
+esc $           : go to the end of the line
+esc A		    : go to end of line and enter text mode
 esc gm	       	: go to middle of the full screen line
 esc gM          : go to the middle of the written line
-esc ^	        : go to start of line
 
 esc b		    : back word
 esc w		    : next word
@@ -25,7 +26,6 @@ esc <q> /esc <v>: enter visual block mode to delete column(s)
 esc u		    : undo
 esc <r>         : redo
 esc <v> + shift arrow + I + esc : enter visual mode and insert character
-esc: a + ta15b  : list of commands starting with a
 15+G            : go to line 15, does not use :
 esc: a+tab	    : list of commands starting with a
 esc T/M/B	    : go to top/middle/bottom of the screen
@@ -47,7 +47,7 @@ set ignorecase	            : ignore case
 
 esc: help number            : get help on number or other
 esc: left/center/right 40   : format text as left/center/right 
-esc: %s/word1/word2/g       : replace in entire document(%) all occurrences of word1 by word2
+esc: %s/word1/word2/g       : replace in entire document(%) all occurrs of word1 by word2
 esc:colorscheme +tab        : popup menu with color scheme values
 <n>,<p>		                : go up and down on displayed menu with alternative values
 esc:ab xxx text	            : create abbrv, -->type abbrv. and esc to display full text<--
