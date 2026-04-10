@@ -188,7 +188,7 @@ tar -zcvf archive_name.tar.gz directory_name/     #(archive and compress full fo
 rsync -av /path/to/source/ /path/to/destination/  #(-a is recursive to all included dir, -v is verbose and show all copied files)
 split -b [size] [filename] [prefix]
 
-**PACKAGE MANAGEMENT**
+# **PACKAGE MANAGEMENT**
 sudo apt <packagename> (remove downloaded files)
 sudo apt update <packagename>
 sudo apt upgrade <packagename>
@@ -323,7 +323,6 @@ seq 10|awk '{if ($1 % 2 == 0) {print > "even.txt"} else {print > "odd.txt"}}'
 
 
 # **SCRIPTS**
-
 #!/bin/bash
 #To update package libraries, upgrade packages and remove unneeded packages 
 echo "Updating system packages..."
