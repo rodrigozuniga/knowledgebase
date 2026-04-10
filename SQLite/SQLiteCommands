@@ -1,0 +1,104 @@
+# **SQLite**
+
+**DB COMMANDS**
+sqlite3 database.db  (open a database)
+.help (list of .commands)
+.help command (possible values and options)
+
+.databases
+ pragme database_list (| as separator; list names of all databases)
+.dbinfo DATABASE_NAME (general information about a database)
+.open DATABASE.db
+ATTACH "/home/rzuniga/DATABASE_NAME" as dbnickname
+DETACH dbnickname
+.show (show current settings)
+pragma integrity_check
+pragma quick_check
+pragma vacuum
+pragma page_count;
+  
+ .tables
+ pragma table_list
+ pragma table_info(tablename)
+
+.clone NEWDB (clones data into NEWDB)
+.dump (sql dump of the entire database)
+.dump ?OBJECTS? (sql dump of the object)
+.excel (display next output in spreadsheet)
+.expert (suggest indexes for queries)
+.indexes
+pragma index_list(tablename)
+.www (display next output in web browser)
+.shell CMD (run CMD in system shell)
+.shell clear (clear screen)
+.system CMD (run CMD in system shell)
+.schema tablename (sql for tablename)
+.print STRING
+.cd DIRECTORY
+.backup DB FILE (backup DB to FILE)
+.separator ","
+.import --csv --skip 0 /home/rzuniga/dataset.csv sales_nonrelated
+.mode column/table/line/json
+.headers on/off
+.output FILENAME (output goes to FILENAME; output alone restores default)
+.read filename.sql (run sql file)
+.parameter set $amount 100
+.parameter list (list of parameters)
+.quit
+
+<A> (go to start of the line)
+<E> (go to the end of the line)
+<U> (delete from cursor to the end)
+<K> (delete from cursor to the beggining)
+<R> (search history)
+
+**SQL**
+SELECT * FROM film LIMIT 10 OFFSET 20;
+select current_timestamp;
+select date('now');
+#Transactions: series of sql operations treated as one unit
+#with BEGIN the autocommit mode is suspended till COMMIT or ROLLBACK
+BEGIN;
+    UPDATE account SET balance = balance - 100 WHERE id = 1;
+    UPDATE account SET balance = balance + 100 WHERE id = 2;
+COMMIT;
+
+select first_name||' '||last_name from actor; 
+select strftime('%Y%m',current_timestamp) from actor limit 10;
+select julianday('now') - julianday('2026-01-01); (days since start of 2026)
+
+#Named window:
+SELECT 
+    ROW_NUMBER() OVER w as row_num,
+    RANK()       OVER w as rank,
+    DENSE_RANK() OVER w as dense_rank,
+    title, rental_rate
+FROM film
+WINDOW w AS (ORDER BY rental_rate DESC)
+LIMIT 10;
+
+select datetime('now','+1 day/month/year')
+
+INSERT INTO actor (actor_id, first_name,last_name,last_update) VALUES
+    (8888,'JOSE','ZUNIGA',DATETIME('now')), 
+    (8889,'LICHI','ZUNIGA',datetime('now')), 
+    (8890,'CLARITA','GABLE',datetime('now'));
+UPDATE actor SET last_update = DATETIME('NOW')  WHERE rowid = new.rowid;
+CREATE TABLE genre (
+    genre_id   INTEGER PRIMARY KEY AUTOINCREMENT,
+    name       TEXT NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+alter table actor add column age integer;
+drop table if exists tobyfilms;
+
+
+**SQLite IN PYTHON**
+import sqlite3
+conn=sqlite3.connect('database.db')
+cursor = conn.cursor()
+cursor.execute('select * from actor')
+rows = cursor.fetchall()
+
+import pandas as pd
+df = pd.read_sql('select * from actor')
