@@ -1,0 +1,81 @@
+**DOCUMENTATION**
+
+git <command> -h (list of all command flags)
+git help <command> / git <command> --help
+git help -g (list of concepts)
+git help --all (list of all commands)
+
+
+**CONFIGURATION**
+
+git config --global user.name "YourName"
+git config --global user.email "x@x.com'
+git config user.name "YourName" (for specific project, overrides global)
+git config --list (all configs including alias shortcuts)
+git config --global alias.br branch (create global alias)
+
+ 
+**LOCAL PROJECT SETUP**
+
+  --ADD & COMMIT FILES--
+git init <directory> (used also to reinitialize an existing directory)
+git status (show all files and their git status)
+git add
+git add -n (dry run)
+git restore --staged <filename> (to unstage file)
+git reset HEAD <file> (to unstage file)
+git reset (to unstage everything)
+git diff (show difference between working directory and staged files)
+
+git commit <filename> -m 'commit message'
+git commit -am 'commit message'
+git reset --soft HEAD~1 (uncommit changes but keep them on stage ready to commit again)
+git reset hard HEAD~1 (discard the commit and all changes completely)
+git log
+git show (shows various types of objects like commits, tags and diffs)
+git mv <filename> <newfilename> (git renames file)
+git rm <filename> (remove file from working tree and index)
+git config --global alias.ac '!git add -A && git commit -m'
+
+  --REMOTE PROJECT SETUP--
+echo "#remote_start" >>README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main (rename branch even if it exists)
+git remote add origin https://github.com/rodrigozuniga/remote_start.git
+git push -u origin main (-u set/links upstream for git pull/status)
+
+  --PUSH EXISTING REPOSITORY--
+git remote add origin https://github.com/rodrigozuniga/remote_start.git
+git branch -M main (rename branch even if it already exists)
+git push -u origin main (set upstream for git pull/push)
+
+  --LOCAL BRANCHES--
+git branch -a
+git checkout -b branchName (-b is to create and change into the created branch)
+git switch -c (-c is to create the branch before switching to it)
+git diff <branch> <branch>
+git diff --staged (diff working directory and staged files)
+git blame filename (shows what revision and author last modified each line of a file)
+git rebase <commit#>  (reapplies commits on top of another base)
+git stash (revert changes to files but keep them so changes can be reapplied, works on staged and unstaged changed files)
+git stash -m "add a comment for the stash list"
+git revert <commit> (create commit to reverse changes associated with the specific commit)
+git ls-tree <branchname> (list of files associated with a branch)
+git ls-files
+git cherry-pick <commit#>
+
+**GITHUB CLI**
+gh --help
+gh --version
+gh browse
+gh create --public rodrigozuniga/ghcli
+gh repo clone rodrigozuniga/bash
+gh pr status
+gh issue list
+gh pr create --title "TiTle" --body "Description of request"
+gh pr merge --squash --delete-branch 
+
+
+
