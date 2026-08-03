@@ -1,15 +1,15 @@
 # Knowledgebase: 
 
-Linux commands,
-vim, 
-bash, 
-regex, 
-SQLite, 
-Python, 
-GitHub, 
-Containers,
-Virtual Environments,
-AI
+Linux commands,  
+vim,  
+bash,  
+regex,  
+SQLite,  
+Python,   
+GitHub,   
+Containers,  
+Virtual Environments,  
+AI. 
 
 
 ⠈⠀⢀⡅⠀⠀⠈⠀⢧⡄⠀⠀⢀⠀⠨⠀⠸⠁⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⡠⠊⠀
