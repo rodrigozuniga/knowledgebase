@@ -8,6 +8,6 @@ SQLite,
 Python, 
 GitHub, 
 Containers,
-Environments
+Virtual Environments,
 AI
 
