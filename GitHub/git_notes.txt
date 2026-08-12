@@ -66,6 +66,7 @@ git revert <commit> (create commit to reverse changes associated with the specif
 git ls-tree <branchname> (list of files associated with a branch)
 git ls-files
 git cherry-pick <commit#>
+git symbolic-ref HEAD #shows current HEAD
 
 **GITHUB CLI**
 gh --help
