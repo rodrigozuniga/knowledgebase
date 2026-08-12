@@ -13,6 +13,7 @@ git config --global user.email "x@x.com'
 git config user.name "YourName" (for specific project, overrides global)
 git config --list (all configs including alias shortcuts)
 git config --global alias.br branch (create global alias)
+git config --global alias.st status
 
  
 **LOCAL PROJECT SETUP**
