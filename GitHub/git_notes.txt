@@ -63,8 +63,10 @@ git blame filename (shows what revision and author last modified each line of a 
 git rebase <commit#>  (reapplies commits on top of another base)
 git stash (revert changes to files but keep them so changes can be reapplied, works on staged and unstaged changed files)
 git stash -m "add a comment for the stash list"
+git stash list #list of stashes
+git stash pop #pop last stash back
 git revert <commit> (create commit to reverse changes associated with the specific commit)
-git ls-tree <branchname> (list of files associated with a branch)
+git ls-tree -l <branchname> (list of files associated with a branch, -l include object size)
 git ls-files
 git cherry-pick <commit#>
 git symbolic-ref HEAD #shows current HEAD
