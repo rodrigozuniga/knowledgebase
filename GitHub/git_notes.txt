@@ -68,7 +68,7 @@ git stash pop #pop last stash back
 git revert <commit> (create commit to reverse changes associated with the specific commit)
 git ls-tree -l <branchname> (list of files associated with a branch, -l include object size)
 git ls-files
-git cherry-pick <commit#>
+git cherry-pick <commit#> #git merge/rebase, move branch histories, cherry-picking copy only selected commits.
 git symbolic-ref HEAD #shows current HEAD
 
 **GITHUB CLI**
