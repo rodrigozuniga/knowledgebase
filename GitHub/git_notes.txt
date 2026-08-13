@@ -54,6 +54,7 @@ git push -u origin main (set upstream for git pull/push)
 
   --LOCAL BRANCHES--
 git branch -a
+git remote -v #url of remote branches
 git checkout -b branchName (-b is to create and change into the created branch)
 git switch -c (-c is to create the branch before switching to it)
 git diff <branch> <branch>
