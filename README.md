@@ -9,7 +9,8 @@ Python,
 GitHub,   
 Containers,  
 Virtual Environments,  
-AI. 
+AI Agents,  
+Other
 
 
 ⠈⠀⢀⡅⠀⠀⠈⠀⢧⡄⠀⠀⢀⠀⠨⠀⠸⠁⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⡠⠊⠀
