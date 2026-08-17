@@ -11,6 +11,7 @@ dstats
 systemd-analyze blame     #(how long an initial process takes to load)
 env                       #(list of environment variables, might be listenv instead of env)
 nmon                      #(menu for CPU, memory, disk, utilization and others)
+sudo lsof -i -P -n|grep LISTEN #(list of open ports in the computer)
   --other--
 cowsay mooo 
 sl            #(running train, ls mispelled)
@@ -121,7 +122,8 @@ $(( ))	Arithmetic Expansion	Performs math, returns result  | val=$((10/2))
 
 
 # **PIPPING**
-# Variables defined in the main shell are available to all commands in a pipeline (as they run in subshells that inherit the environment
+# Variables defined in the main shell are available to all commands in a pipeline 
+# (as they run in subshells that inherit the environment
 > (redirect output)
 | (use output/left as input/right) 
 xargs (allows to put output on the right of the pipped to command)
@@ -198,6 +200,8 @@ sudo apt-get <packagename>
 sudo snap <package name>  #install snapd not snap
 snap list                 #(list of installed snap packages)
 dpkg --listfiles cowsay   #(check what packages have been installed by cowsay)
+brew install <packagename>
+brew list                 #(list of installed packages)
 
 # **USER MANAGEMENT**
 id lichiops                     #(returns uid, gid and groups to which the user belongs)
