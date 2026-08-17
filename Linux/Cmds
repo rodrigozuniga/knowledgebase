@@ -12,6 +12,7 @@ systemd-analyze blame     #(how long an initial process takes to load)
 env                       #(list of environment variables, might be listenv instead of env)
 nmon                      #(menu for CPU, memory, disk, utilization and others)
 sudo lsof -i -P -n|grep LISTEN #(list of open ports in the computer)
+time ls -al               #(add to results how long the proceduce/command takes)
   --other--
 cowsay mooo 
 sl            #(running train, ls mispelled)
@@ -221,6 +222,7 @@ write
 
 # **DATA/TEXT/DATES MANIPULATION**
 q 'select * from file1.txt'
+duckdb -noheader -c "select count(*) from read_csv('xaa.csv',header=false) limit 10;"
 tr -s ' ' < lsl.out|cut -d ' ' -f 1-3   #(single blank space, select c1 to c3)
 awk '{print $1 $2}' <filename>
 sed '/rzuniga/d' <filename>             #(delete all lines containing rzuniga)
