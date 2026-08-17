@@ -212,6 +212,8 @@ cat /etc/passwd                 #(list of usernames and others)
 users                           #(list of logged in users)
 last <username>                 #(last logins of <username>)
 useradd <username> <groupname>  #(create group or add user to a group)
+sudo sysadminctl -addUser Lichi -│
+fullName "Lichi Zuniga" -password Lichi  #in Mac creates Lichi user
 sudo deluser johndoe developers #(removes user from group or remove user)
 sudo wall "message"
 talk
