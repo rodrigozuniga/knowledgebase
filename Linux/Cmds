@@ -241,6 +241,7 @@ datamash -t ' ' transpose < filename > filename.transposed
 datamash -t ',' -H sum Years_Customer < crosstab_data.txt 
 datamash -st ',' -H crosstab Gender,Region sum Age < crosstab_data.txt|column -ts ',' #(only one variable)
 xsv stats --select Age Titanic.csv
+xsv stats --select Age Titanic.csv|xsv table|rs -T  #(rs -T is to transpose the table)
 echo $(( ($(date +%s) - $(date --date="1967-06-19" +%s))/86400))
 comm -12 file1 file2                                  #(only lines present in both file1 and file2)
 comm -3  file1 file2                                  #(only lines unique to each file)
@@ -259,6 +260,8 @@ cat <filename>|datamash sum 1 mean 1 range 1 count 1
 seq 1 10|datamash sum 1 mean 1 range 1 count 1 min 1 q1 1 median 1 q3 1 max perc 1 rand 1 
 $RANDOM                       #(generate random between 1 and 32768)
 $SRANDOM                      #(generate random between 1 and 9,999,999,999)
+python3 -c "import random; print(random.randint(0, 10**18))" #(using python random module)
+
 shuf -i 1-100 -n 1            #(select 1 number out of 1 to 100)
 IFS=+; echo "${arr[*]}" | bc
 awk '{T+=$1} END {print T}' sum_test.txt
