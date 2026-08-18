@@ -251,27 +251,17 @@ diff  <(sort col1) <(sort col2)
 awk '{print $0,($1<50 ? "low":"high")}' sum_test.txt  #(derive one column from another with if logic)
 ls -l|awk 'BEGIN {print NF,NR} END {print NF,NR}'     #(NF:# of fields, NR: # of records)
 seq 10|awk '{ print $0, ($1 % 2 == 0 ? "Even" : "Odd") }'
-
-
-# **MATH & PROBABILITIES**
-echo "scale = 2; (16 + 63) / 5" | bc
-echo "scale = 3; sqrt(100)|bc -l
-cat <filename>|datamash sum 1 mean 1 range 1 count 1
-seq 1 10|datamash sum 1 mean 1 range 1 count 1 min 1 q1 1 median 1 q3 1 max perc 1 rand 1 
-$RANDOM                       #(generate random between 1 and 32768)
-$SRANDOM                      #(generate random between 1 and 9,999,999,999)
-python3 -c "import random; print(random.randint(0, 10**18))" #(using python random module)
-python3 -c "import math; print(math.log(10))"
-python3 -c "import math; print(math.log10(10))"
-shuf -i 1-100 -n 1            #(-i :select 1 number out of 1 to 100)
-shuf -1 1-100
-IFS=+; echo "${arr[*]}" | bc
 awk '{T+=$1} END {print T}' sum_test.txt
 awk 'BEGIN {cummulativeTotal=1000 } { cummulativeTotal += $1; print $1 , cummulativeTotal} END{print "Final Total: " cummulativeTotal}' sum_test.txt #(cummulative sum showing each step)
 gretl                         #(time series package)
 gnu pspp                      #(stats package)
 jamovi                        #(stats package)
 jasp                          #(stats package)
+
+#** ARRAYS & ASSOCIATIVE ARRAYS**
+arr=("apple" "banana" "cherry")
+declare -A aarr #(Mandatory for associative arrays)
+aarr=([color]="red" [size]="large")
 
 # **FUNCTIONS**
 function <functionname>(){ 
