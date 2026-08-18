@@ -90,7 +90,8 @@ fast                    #(test connection with fast.com)
 
 
 # **PROCESS MANAGEMENT**
-bg      # check job number with jobs and do bg %<jobnum>
+script.sh #(run script/job in the background)
+bg        #(check job number with jobs and do bg %<jobnum>)
 fg
 jobs 
 ps
@@ -128,7 +129,8 @@ $(( ))	Arithmetic Expansion	Performs math, returns result  | val=$((10/2))
 > (redirect output)
 | (use output/left as input/right) 
 xargs (allows to put output on the right of the pipped to command)
-2>&1 (the >& indicates that both 2/stderr and 1/stdoutput are file descriptors and not filenames)
+ls File*|xargs rm 
+2>&1 (the >& indicates that both 2/stderr and 1/stdoutput are file descriptors and not filenames; merges the output into 1)
 echo "scale = 2; (16 + 63) / 5" | bc
 cat <<< filename (passes filename to the standard input for command cat) 
 bc <<< "scale=2; 1/2" (same as above)
@@ -259,9 +261,16 @@ jamovi                        #(stats package)
 jasp                          #(stats package)
 
 #** ARRAYS & ASSOCIATIVE ARRAYS**
-arr=("apple" "banana" "cherry")
-declare -A aarr #(Mandatory for associative arrays)
-aarr=([color]="red" [size]="large")
+arr=("apple" "banana" "cherry")     #(note no commas are used)
+echo ${arr[1]}   #(element index starts at 1, not 0)
+echo ${arr[@]}   #(returns all elements of the array)
+
+declare -A aarr  #(Mandatory for associative arrays)
+aarr=([color]="red" [size]="large") #(note no commas are used)
+echo ${aarr[@]}
+declare -ri MAX_ATTEMPTS=5 #(by explicit declaration the variable is set to 5, read only and becomes a constant)
+declare - [iraAlux] # -i:int; -r:readOnly; a:array; A:assoc.array; l:lower case; u:uppercase; x
+
 
 # **FUNCTIONS**
 function <functionname>(){ 
@@ -293,13 +302,13 @@ break         #(exit loop entirely)
 
 ls File*|xargs rm  
 
-echo "${companies[@]}"|xargs -n 1 ping -c 3 #(-n is to pass one argument at a time)
+echo "${companies[@]}"|xargs -n 1 ping -c 3 #(-n 1 is to pass one argument at a time)
 
 cat filenames|xargs  -I {} sh -c '[ -f "{}" ] && echo "{}" file exist|| echo "{}" does not exist'
 
 echo {1..5}|tr ' ' "\n"|xargs -I {} echo the number is {}
 
-echo {1..5}|xargs -n 1 sh -c 'echo the number is $0'
+echo {1..5}|xargs -n 1 sh -c 'echo the number is $0' #(gets shell and $0 is what is being passed)
 
 
 # ---*LOGIC FLOW*---
