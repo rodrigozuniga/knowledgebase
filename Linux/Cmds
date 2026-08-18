@@ -263,7 +263,8 @@ $SRANDOM                      #(generate random between 1 and 9,999,999,999)
 python3 -c "import random; print(random.randint(0, 10**18))" #(using python random module)
 python3 -c "import math; print(math.log(10))"
 python3 -c "import math; print(math.log10(10))"
-shuf -i 1-100 -n 1            #(select 1 number out of 1 to 100)
+shuf -i 1-100 -n 1            #(-i :select 1 number out of 1 to 100)
+shuf -1 1-100
 IFS=+; echo "${arr[*]}" | bc
 awk '{T+=$1} END {print T}' sum_test.txt
 awk 'BEGIN {cummulativeTotal=1000 } { cummulativeTotal += $1; print $1 , cummulativeTotal} END{print "Final Total: " cummulativeTotal}' sum_test.txt #(cummulative sum showing each step)
