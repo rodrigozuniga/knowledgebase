@@ -231,6 +231,7 @@ sed -n '/\bq/p' lsl.out                 #(output lines that contain a word start
 sed -i 's/unix/linux/g' filename.txt    #(replace in place with -i)
 grep "<pattern>" <filename>             #(search for pattern in a file)
 egrep "<pattern>" <filename>            #(same as grep -E for extended regex)
+rg "<pattern> <filename>                #(faster that grep)
 cat lsl.out|rg '\bq\w*'
 paste col1 col2                         #(join columns from different files)
 seq 1 10|datamash sum 1 mean 1 range 1 count 1
@@ -239,6 +240,7 @@ cat bygroup.txt|datamash -g 1 sum 2 mean 2
 datamash -t ' ' transpose < filename > filename.transposed
 datamash -t ',' -H sum Years_Customer < crosstab_data.txt 
 datamash -st ',' -H crosstab Gender,Region sum Age < crosstab_data.txt|column -ts ',' #(only one variable)
+xsv stats --select Age Titanic.csv
 echo $(( ($(date +%s) - $(date --date="1967-06-19" +%s))/86400))
 comm -12 file1 file2                                  #(only lines present in both file1 and file2)
 comm -3  file1 file2                                  #(only lines unique to each file)
