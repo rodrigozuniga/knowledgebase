@@ -204,7 +204,12 @@ sudo snap <package name>  #install snapd not snap
 snap list                 #(list of installed snap packages)
 dpkg --listfiles cowsay   #(check what packages have been installed by cowsay)
 brew install <packagename>
-brew list                 #(list of installed packages)
+brew list                 #(macos: list of installed packages)
+brew update               #(macos: update all packages)
+brew upgrade              #(macos: upgrade all packages)
+brew cleanup              #(macos: remove old packages)
+sudo softwareupdate -ia --verbose #(macos: update core macos and apps)
+
 
 # **USER MANAGEMENT**
 id lichiops                     #(returns uid, gid and groups to which the user belongs)
@@ -328,8 +333,11 @@ lineCount=0
 while IFS= read -r line || [[ -n "$line" ]]; do
   # Place your commands here to process the current line
   ((lineCounter++))
-  echo "Processing line $lineCounter: $line"
-done < "$FILE"
+  c=$( wc -c "$line"|awk '{print $1}' )
+  w=$( wc -w "$line"|awk '{print $1}' )
+  l=$( wc -l "$line"|awk '{print $1}' )
+  echo "Processing line $lineCounter: $line has $c characters, $w words and $l lines "
+done < filename
 
 
 # **OUTPUT TO FILE**
@@ -337,7 +345,7 @@ seq 10|awk '{if ($1 % 2 == 0) {print > "even.txt"} else {print > "odd.txt"}}'
 
 
 # **SCRIPTS**
-#!/bin/bash
+#!/bin/bash #(shebang or hashbang, must be first line of the file to work)
 #To update package libraries, upgrade packages and remove unneeded packages 
 echo "Updating system packages..."
 echo $1|sudo apt update && sudo apt upgrade -y
