@@ -12,7 +12,7 @@ systemd-analyze blame     #(how long an initial process takes to load)
 env                       #(list of environment variables, might be listenv instead of env)
 nmon                      #(menu for CPU, memory, disk, utilization and others)
 sudo lsof -i -P -n|grep LISTEN #(list of open ports in the computer)
-time ls -al               #(add to results how long the proceduce/command takes)
+time ls -al               #(add to results how long the ls -l proceduce/command takes)
   --other--
 cowsay mooo 
 sl            #(running train, ls mispelled)
