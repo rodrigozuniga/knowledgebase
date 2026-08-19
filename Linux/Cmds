@@ -264,6 +264,7 @@ jasp                          #(stats package)
 arr=("apple" "banana" "cherry")     #(note no commas are used)
 echo ${arr[1]}   #(element index starts at 1, not 0)
 echo ${arr[@]}   #(returns all elements of the array)
+printf "%s\n" "${arr[@]}" #(prints each array element on a new line) 
 
 declare -A aarr  #(Mandatory for associative arrays)
 aarr=([color]="red" [size]="large") #(note no commas are used)
@@ -304,18 +305,18 @@ ls File*|xargs rm
 
 echo "${companies[@]}"|xargs -n 1 ping -c 3 #(-n 1 is to pass one argument at a time)
 
-cat filenames|xargs  -I {} sh -c '[ -f "{}" ] && echo "{}" file exist|| echo "{}" does not exist'
+cat filenames|xargs  -I {} sh -c '[ -f "{}" ] && echo "{}" file exist|| echo "{}" does not exist' #( -I execute shell for each input line)
 
-echo {1..5}|tr ' ' "\n"|xargs -I {} echo the number is {}
+echo {1..5}|tr ' ' "\n"|xargs -I {} echo the number is {} #(no new shell used)
 
-echo {1..5}|xargs -n 1 sh -c 'echo the number is $0' #(gets shell and $0 is what is being passed)
+echo {1..5}|xargs -n 1 sh -c 'echo the number is $0' #(same but gets shell and $0 is what is being passed)
 
 
 # ---*LOGIC FLOW*---
 ((condition ? expr1 : expr2))       #(Ternary operator)
-echo $(( $x == "hello" ? 1: 0 ))
+echo $(( $x == 7 ? 1: 0 ))          #(Only works if x value is a number)
 echo $( [ $((x%3)) -eq 0 ] && echo "it is zero"||echo "it is not zero" )
-
+[ "$x" == "hello" ] && echo 1 || echo 0 #(with x=hello; no space before/after = sign)
 
 # **READ FROM FILE**
 readarray -t arr < lines.txt
