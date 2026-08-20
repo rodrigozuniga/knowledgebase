@@ -10,7 +10,7 @@
 
 
 
-# **SYSTEM INFO**
+## **SYSTEM INFO**
 uname -a 
 free -h
 duf                       #(table formatted disk usage)
