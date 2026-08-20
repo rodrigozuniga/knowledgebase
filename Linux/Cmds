@@ -85,7 +85,7 @@ Broadcast: .255 (the top of a /24) is the broadcast address — not assignable t
 # ls -l /home/rzuniga/Documents/{bash_class,git_class,regex_class} (nesting arguments for a command)
 
 # **SYSTEM FILES & DIRECTORIES**
-# / (Root)
+# /     (Root)
 # /bin  (contains binary executable files)
 # /sbin (similar to bin but for root programs)
 # /etc  (system wide configuration)
