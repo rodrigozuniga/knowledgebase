@@ -56,10 +56,11 @@ speedtest-cli           #(test connection speed with ookla)
 fast                    #(test connection with fast.com)
 
 IP addresses:
-RANGE:	                        CIDR:          SIZE:              TYPICAL USE:
-10.0.0.0  –  10.255.255.255	  10.0.0.0/8	    ~16.7M addresses	Large networks, cloud, corporate
-172.16.0.0 – 172.31.255.255	  172.16.0.0/12	  ~1M addresses	    Mid-size; Docker uses this by default
-192.168.0.0 – 192.168.255.255	192.168.0.0/16	~65k addresses	  Home/small networks (most routers)
+RANGE:	                           CIDR:             SIZE:              TYPICAL USE:
+10.0.0.0    –  10.255.255.255	   10.0.0.0/8	      ~16.7M addresses   	Large networks, cloud, corporate
+172.16.0.0  –  172.31.255.255	   172.16.0.0/12	  ~1M addresses	      Mid-size; Docker uses this by default
+192.168.0.0 –  192.168.255.255	 192.168.0.0/16	  ~65k addresses	    Home/small networks (most routers)
+
 RFC1918: Anything in them is yours to assign; they never route on the public internet.
 169.254.x.x — link-local (APIPA). A device gives itself one of these when it fails to get an IP from DHCP. Seeing it = "no DHCP." Never assign it manually.
 127.0.0.1 — localhost, this machine only. Not for other devices.
