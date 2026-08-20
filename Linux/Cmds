@@ -38,8 +38,10 @@ apropos <keyword>
 
 # **NETWORKS**
 ifconfig
-ip a
+ipconfig getifaddr en0  #(get only the ipaddress)
+ip -4/6 addr
 ping google.com
+host google.com
 traceroute google.com   #(where is the bottle neck in the network)
 mtr -4b --report google.com
 ssh joseops@localhost   #(login into own machine as a different user)
@@ -51,11 +53,15 @@ sudo ufw status         #(firewall status by port)
 iptables                #(filter packages)
 nslooup url             #(check DNS information)
 dig url                 #(check info about domain; dns)
+dscacheutil -flushcache #(flush DNS cache; to use if site don't resolve)
 arp-scan localnet       #(scan for other devices on the same network)
 speedtest-cli           #(test connection speed with ookla)
 fast                    #(test connection with fast.com)
 
 IP addresses:
+
+ipconfig getifaddr en0  #(get only the ipaddress)
+
 RANGE:	                           CIDR:             SIZE:              TYPICAL USE:
 10.0.0.0    –  10.255.255.255	   10.0.0.0/8	      ~16.7M addresses   	Large networks, cloud, corporate
 172.16.0.0  –  172.31.255.255	   172.16.0.0/12	  ~1M addresses	      Mid-size; Docker uses this by default
