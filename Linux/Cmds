@@ -38,9 +38,11 @@ apropos <keyword>
 
 # **NETWORKS**
 ifconfig
+ifconfig en0|grep inet #(en0 is usually wifi)
 ipconfig getifaddr en0  #(get only the ipaddress)
 ip -4/6 addr
 ping google.com
+ping6 -c 5 google.com        #(IPV6, no NAT in the path, Internet address, -c is count of pings)
 host google.com
 traceroute google.com   #(where is the bottle neck in the network)
 mtr -4b --report google.com
@@ -50,13 +52,16 @@ ss                      #(sockets list)
 curl -o <new_package_name> <package url> #(handle significantly more protocols than wget)
 wget https://flaviocopes.pages.dev/books/cli-commands-handbook.pdf (can handle http/s and ftp)
 sudo ufw status         #(firewall status by port)
-iptables                #(filter packages)
+iptables                #(show rules to filter packages)
+sudo pfctl -s rules     #(macos: show rules to fileter packages)
 nslooup url             #(check DNS information)
 dig url                 #(check info about domain; dns)
 dscacheutil -flushcache #(flush DNS cache; to use if site don't resolve)
 arp-scan localnet       #(scan for other devices on the same network)
 speedtest-cli           #(test connection speed with ookla)
 fast                    #(test connection with fast.com)
+networksetup -getmacaddress en0 #(macos:get mac address)
+networksetup -listallhardwareports
 
 IP addresses:
 
