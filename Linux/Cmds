@@ -14,6 +14,7 @@ env                       #(list of environment variables, might be listenv inst
 nmon                      #(menu for CPU, memory, disk, utilization and others)
 sudo lsof -i -P -n|grep LISTEN #(list of open ports in the computer)
 time ls -al               #(add to results how long the ls -l proceduce/command takes)
+alias hgrep="history|grep" #(create alias command; alias aliascommand gives the alias content)
   --other--
 cowsay mooo 
 sl            #(running train, ls mispelled)
@@ -95,7 +96,7 @@ Broadcast: .255 (the top of a /24) is the broadcast address — not assignable t
 # !#:1 + tab (on the line refer to previous argument/flag, like a path to file or mkdir path; 0 refers to the command and 2,3...refers to 2nd or 3rd argument/flag)
 # ls -l /home/rzuniga/Documents/{bash_class,git_class,regex_class} (nesting arguments for a command)
 
-# **SYSTEM FILES & DIRECTORIES**
+# **SYSTEM DIRECTORIES**
 # /     (Root)
 # /bin  (contains binary executable files)
 # /sbin (similar to bin but for root programs)
@@ -197,12 +198,15 @@ ln <filename>  <hard link to file> # (hard link to the file)
 rg -l                   #(rip grep; super search; -l only list files)
 chmod +rwx <filename>   #(add read,write,execute to permissions for all groups)
 chown                   #(change ownership of file)
+umask                   #(sets the default permissions that get stripped from new files and directories, -S: print symbolically)
+umask -S                #(-S: print symbolically rwx; files start at 644 and directories start at 777)
 pushd <+n> <directory>  #(add to the stack)
 dirs -v                 #(show all paths in stack)
 popd                    #(remove from top of the stack) 
 cmp file1 file2         #(compare files bits, if files are equal it returns nothing)
 locate /home/rzuniga/Documents .pdf
 find . -maxdepth 2 -type f -name "*.pdf"
+type ls                 #(4 types: executable, shell built-in, shell function and alias)
 split -b [size] [filename] [prefix]   #(split file in smaller files, rejoin files with cat) 
 ranger                                #(cli interface to navigate directories and check and/or delete files)
 
