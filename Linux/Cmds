@@ -11,7 +11,10 @@ lshw                      #(list of hardware)
 dstats
 systemd-analyze blame     #(how long an initial process takes to load)
 env                       #(list of environment variables, might be listenv instead of env)
-nmon                      #(menu for CPU, memory, disk, utilization and others)
+env USER=fla node app.js  #(pass variable to specific environment, app.js being run by node)
+export TEST="test"        #(used to export variables to child processes)
+export PATH=$PATH:/new/p  #(to add and export a new path)
+Flavio Copes. linux-commands-handbook (p. 138). (Function). Kindle Edition. Flavio Copes. linux-commands-handbook (p. 149). (Function). Kindle Edition. nmon                      #(menu for CPU, memory, disk, utilization and others)
 sudo lsof -i -P -n|grep LISTEN #(list of open ports in the computer)
 time ls -al               #(add to results how long the ls -l proceduce/command takes)
 alias hgrep="history|grep" #(create alias command; alias aliascommand gives the alias content)
@@ -251,6 +254,7 @@ useradd <username> <groupname>  #(create group or add user to a group)
 sudo sysadminctl -addUser Lichi -fullName "Lichi Zuniga" -password Lichi  #Mac creates Lichi user
 sudo deluser johndoe developers #(removes user from group or remove user)
 sudo wall "message"
+su lichi                        #login as user lichi, typing exit will return you. 
 talk
 write
 
