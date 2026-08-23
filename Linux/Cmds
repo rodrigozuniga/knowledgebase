@@ -104,7 +104,7 @@ Broadcast: .255 (the top of a /24) is the broadcast address — not assignable t
 # /bin  (contains binary executable files)
 # /sbin (similar to bin but for root programs)
 # /etc  (system wide configuration)
-# /dev  (virtual directory with device files for hardware
+# /dev  (virtual directory with device files for hardware)
 # /proc (virtual files generated in real time with kernel and running processe information)
 # /var  (stores variable data that changes frequently during system operation)
 # /tmp  (temporaty storage)
@@ -395,7 +395,15 @@ echo "#!/bin/bash" >> "$1"
 
 # **APACHE SERVER**
 sudo systemctl start apache2  # (start, check status and stop apache server)
-127.0.0.1                     # (localhost, port 80 for http and port 443 for https)
+127.0.0.1                     # (localhost)
+Ports:
+  21  : 
+  22  : SSH
+  25  : SMTP
+  80  : HTTP
+  443 : HTTPS
+  3306: MySQL
+  5432: PostgreSQL
 sudo systemctl status apache2
 sudo systemctl stop apache2
 sudo systemctl restart apache2
