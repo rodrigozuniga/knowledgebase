@@ -51,15 +51,16 @@ host google.com
 traceroute google.com   #(where is the bottle neck in the network)
 mtr -4b --report google.com
 ssh joseops@localhost   #(login into own machine as a different user)
-ssh -X (X11 forwarding; ssh -Y might be more reliable because less security)
+ssh -X                  #(X11 forwarding; ssh -Y might be more reliable because less security)
+scp/rsynch              #(copy files over SSH)
 ss                      #(sockets list)
 curl -o <new_package_name> <package url> #(handle significantly more protocols than wget)
-wget https://flaviocopes.pages.dev/books/cli-commands-handbook.pdf (can handle http/s and ftp)
-sudo ufw status         #(firewall status by port)
+curl -v www.google.com #(run all stages: DNS, TCP, TLS,HTTP)
+status         #(firewall status by port)
 iptables                #(show rules to filter packages)
 sudo pfctl -s rules     #(macos: show rules to fileter packages)
 nslooup url             #(check DNS information)
-dig url                 #(check info about domain; dns)
+dig url                 #(check info about domain; dns; dig +short for ip only)
 dscacheutil -flushcache #(flush DNS cache; to use if site don't resolve)
 arp-scan localnet       #(scan for other devices on the same network)
 speedtest-cli           #(test connection speed with ookla)
@@ -90,7 +91,7 @@ Broadcast: .255 (the top of a /24) is the broadcast address — not assignable t
 # ^C (kill running process)
 # ^L (clear screen)
 # ^A (moves cursor to begining of the line)
-# ^E (moves cursosr to end of the line)
+# ^E (moves cursor to end of the line)
 # ^K (deletes from cursor to end of the line)
 # ^U (deletes from cursor to beginning of the line)
 # ^W (deletes word before cursor)
@@ -395,9 +396,9 @@ echo "#!/bin/bash" >> "$1"
 
 # **APACHE SERVER**
 sudo systemctl start apache2  # (start, check status and stop apache server)
-127.0.0.1                     # (localhost)
+127.0.0.1                     # (localhost, never leaves machinea)
 Ports:
-  21  : 
+  21  : FTP
   22  : SSH
   25  : SMTP
   80  : HTTP
@@ -410,6 +411,13 @@ sudo systemctl restart apache2
 cd /var/www/gci               #(for index file)
 #macos:
 sudo apachectl start
+
+Code:   Meaning:
+2xx	    Success (200 OK)	
+3xx	    Redirect (301, 302)	
+4xx	    You messed up — 404 not found, 401/403 auth, 429 rate-limited	(client fault)
+5xx	    Server messed up — 500 bug, 502 bad gateway, 503 unavailable (server fault
+
 
 # **MACOS SERVICES**
 brew services list
