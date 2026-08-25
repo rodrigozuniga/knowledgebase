@@ -3,6 +3,7 @@
 uname -a 
 free -h
 duf                       #(table formatted disk usage)
+du -h -s -c               #(total usage on current directory, -h: human, -s: summary, -c total)
 ncdu ~                    #<directory name> (directories in decreasing disk usage)
 nc                        #(netcat, investigate sockets)
 du -h --max-depth=1 Cmds  #<filename>
@@ -197,7 +198,8 @@ pwd
 touch
 mdir                    #(displays an mdos directory content)
 ncdu <directory name>   #(directories in decreasing disk usage,can erase files)
-stat <filename>
+stat <filename>         #(returns when file was last modified and when it was created)
+tree -df -L 3           #(graphic representation of directories and/or files at -L  3 levels)
 ln <filename>  <hard link to file> # (hard link to the file)
 rg -l                   #(rip grep; super search; -l only list files)
 chmod +rwx <filename>   #(add read,write,execute to permissions for all groups)
@@ -218,7 +220,7 @@ ranger                                #(cli interface to navigate directories an
 gzip -r archive.zip files
 gunzip <archivename.zip> -d <dir> #(unzip to a certain directory)
 gunzip -l <archive.zip>           #(list of elements inside a compressed files)
-tar -cf archive.tar files
+tar -czf archive.tar files        #(create zipped files)
 tar -tf archive.tar               #(write or read from file and -t for --list)    
 tar -xf archive.tar
 tar -zcvf archive_name.tar.gz directory_name/     #(archive and compress full folder)
@@ -261,6 +263,9 @@ write
 
 
 # **DATA/TEXT/DATES MANIPULATION**
+head -5 <filename> 
+tail -f <filename>                      #(-f: does not exit, continues to watch end of file)
+sort -nr                                #(sort as numbers)
 q 'select * from file1.txt'
 duckdb -noheader -c "select count(*) from read_csv('xaa.csv',header=false) limit 10;"
 tr -s ' ' < lsl.out|cut -d ' ' -f 1-3   #(single blank space, select c1 to c3)
@@ -270,7 +275,9 @@ sed 's/rzuniga//g' <filename>           #(delete all instances of rzuniga)
 sed -n '/\bq/p' lsl.out                 #(output lines that contain a word starting with q)
 sed -i 's/unix/linux/g' filename.txt    #(replace in place with -i)
 grep "<pattern>" <filename>             #(search for pattern in a file)
-egrep "<pattern>" <filename>            #(same as grep -E for extended regex)
+grep -e pattern1 -e pattern2 <filename> #(search for pattern1 or pattern2)
+egrep "<pattern>|<pattern>" <filename>  #(same as grep -E for extended regex)
+grep -v "pattern" <filename>            #(invert/exclude pattern)
 rg "<pattern> <filename>                #(faster that grep)
 cat lsl.out|rg '\bq\w*'
 paste col1 col2                         #(join columns from different files)
@@ -298,7 +305,7 @@ gnu pspp                      #(stats package)
 jamovi                        #(stats package)
 jasp                          #(stats package)
 
-#** ARRAYS & ASSOCIATIVE ARRAYS**
+#** ARRAYS & ASSOCIATIVE ARRAYS**q
 arr=("apple" "banana" "cherry")     #(note no commas are used)
 echo ${arr[1]}   #(element index starts at 1, not 0)
 echo ${arr[@]}   #(returns all elements of the array)
