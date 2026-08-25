@@ -216,10 +216,10 @@ ranger                                #(cli interface to navigate directories an
 
 # **COMPRESSION/ARCHIVE**
 gzip -r archive.zip files
-gunzip <archivename.zip> -d <directory> #(unzip to a certain directory)
-gunzip -l <archive.zip>                 #(list of elements inside a compressed files)
+gunzip <archivename.zip> -d <dir> #(unzip to a certain directory)
+gunzip -l <archive.zip>           #(list of elements inside a compressed files)
 tar -cf archive.tar files
-tar -tf archive.tar
+tar -tf archive.tar               #(write or read from file and -t for --list)    
 tar -xf archive.tar
 tar -zcvf archive_name.tar.gz directory_name/     #(archive and compress full folder)
 rsync -av /path/to/source/ /path/to/destination/  #(-a is recursive to all included dir, -v is verbose and show all copied files)
@@ -426,3 +426,8 @@ brew services stop <name>
 brew services restart <name>
 brew install mysql
 mysql -u root #(initial connection to mysql with no password
+
+
+
+
+
