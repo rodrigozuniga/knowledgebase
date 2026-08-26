@@ -275,6 +275,7 @@ sed '/rzuniga/d' <filename>             #(delete all lines containing rzuniga)
 sed 's/rzuniga//g' <filename>           #(delete all instances of rzuniga)
 sed -n '/\bq/p' lsl.out                 #(output lines that contain a word starting with q)
 sed -i 's/unix/linux/g' filename.txt    #(replace in place with -i)
+sed '/Alice/s/Boston/Boston,MA/' people.csv #(conditional replacement, only line with Alice)
 grep "<pattern>" <filename>             #(search for pattern in a file)
 grep -e pattern1 -e pattern2 <filename> #(search for pattern1 or pattern2)
 egrep "<pattern>|<pattern>" <filename>  #(same as grep -E for extended regex)
@@ -300,6 +301,7 @@ awk '{print $0,($1<50 ? "low":"high")}' sum_test.txt  #(derive one column from a
 ls -l|awk 'BEGIN {print NF,NR} END {print NF,NR}'     #(NF:# of fields, NR: # of records)
 seq 10|awk '{ print $0, ($1 % 2 == 0 ? "Even" : "Odd") }'
 awk '{T+=$1} END {print T}' sum_test.txt
+awk -F, 'NR>1 {T+=$2;C+=1} END {print T,C, T/C}' people.csv
 awk 'BEGIN {cummulativeTotal=1000 } { cummulativeTotal += $1; print $1 , cummulativeTotal} END{print "Final Total: " cummulativeTotal}' sum_test.txt #(cummulative sum showing each step)
 awk -F, 'CONDITION {ACTION}' <filename>
 gretl                         #(time series package)
