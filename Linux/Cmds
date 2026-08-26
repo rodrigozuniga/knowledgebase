@@ -301,7 +301,9 @@ awk '{print $0,($1<50 ? "low":"high")}' sum_test.txt  #(derive one column from a
 ls -l|awk 'BEGIN {print NF,NR} END {print NF,NR}'     #(NF:# of fields, NR: # of records)
 seq 10|awk '{ print $0, ($1 % 2 == 0 ? "Even" : "Odd") }'
 awk '{T+=$1} END {print T}' sum_test.txt
-awk -F, 'NR>1 {T+=$2;C+=1} END {print T,C, T/C}' people.csv
+awk -F, 'NR>1 {T+=$2;C+=1} END {print T,C, T/C}' people.csv 
+awk -F, 'NR>1 {count[$3]++} END {for (k in count) print k, count[k]}' people.csv
+awk '{c[$1"-"$2]++} END {for (k in c) print k, c[k]}' file.txt
 awk 'BEGIN {cummulativeTotal=1000 } { cummulativeTotal += $1; print $1 , cummulativeTotal} END{print "Final Total: " cummulativeTotal}' sum_test.txt #(cummulative sum showing each step)
 awk -F, 'CONDITION {ACTION}' <filename>
 gretl                         #(time series package)
