@@ -130,7 +130,7 @@ top
 sudo iotop -uo rzuniga #(total disk read and disk write on first two lines)
 kill 
 killall
-history                 #(^R for reverse history search)
+history 5                #(^R for reverse history search, 5 for 5 last commands)
 alias hgrep='history|grep'
 glances
 time <command>
@@ -160,7 +160,7 @@ $(( ))	Arithmetic Expansion	Performs math, returns result  | val=$((10/2))
 | (use output/left as input/right) 
 xargs (allows to put output on the right of the pipped to command)
 ls File*|xargs rm 
-2>&1 (the >& indicates that both 2/stderr and 1/stdoutput are file descriptors and not filenames; merges the output into 1)
+2>&1 >file.log (the >& indicates that both 2/stderr and 1/stdoutput are file descriptors and not filenames; merges the output into 1)
 echo "scale = 2; (16 + 63) / 5" | bc
 cat <<< filename (passes filename to the standard input for command cat) 
 bc <<< "scale=2; 1/2" (same as above)
@@ -212,7 +212,8 @@ popd                    #(remove from top of the stack)
 cmp file1 file2         #(compare files bits, if files are equal it returns nothing)
 locate /home/rzuniga/Documents .pdf
 find . -maxdepth 2 -type f -name "*.pdf"
-type ls                 #(4 types: executable, shell built-in, shell function and alias)
+find /path/to/search -type f -size +100M
+type ls                    #(4 types: executable, shell built-in, shell function and alias)
 split -b [size] [filename] [prefix]   #(split file in smaller files, rejoin files with cat) 
 ranger                                #(cli interface to navigate directories and check and/or delete files)
 
@@ -300,6 +301,7 @@ ls -l|awk 'BEGIN {print NF,NR} END {print NF,NR}'     #(NF:# of fields, NR: # of
 seq 10|awk '{ print $0, ($1 % 2 == 0 ? "Even" : "Odd") }'
 awk '{T+=$1} END {print T}' sum_test.txt
 awk 'BEGIN {cummulativeTotal=1000 } { cummulativeTotal += $1; print $1 , cummulativeTotal} END{print "Final Total: " cummulativeTotal}' sum_test.txt #(cummulative sum showing each step)
+awk -F, 'CONDITION {ACTION}' <filename>
 gretl                         #(time series package)
 gnu pspp                      #(stats package)
 jamovi                        #(stats package)
