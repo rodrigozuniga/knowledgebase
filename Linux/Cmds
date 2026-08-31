@@ -125,6 +125,7 @@ bg        #(check job number with jobs and do bg %<jobnum>)
 fg
 jobs 
 ps
+ps aux   #(all users, extended in decreasing order of CPU usage)
 pstree
 top
 sudo iotop -uo rzuniga #(total disk read and disk write on first two lines)
