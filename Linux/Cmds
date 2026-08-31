@@ -6,6 +6,7 @@ duf                       #(table formatted disk usage)
 du -h -s -c               #(total usage on current directory, -h: human, -s: summary, -c total)
 ncdu ~                    #<directory name> (directories in decreasing disk usage)
 nc                        #(netcat, investigate sockets)
+nc -zv example.com 443    #(check connection to example.com is successful on port 443)
 du -h --max-depth=1 Cmds  #<filename>
 glances                   #(cpu, mem, disk io, other)
 lshw                      #(list of hardware)
