@@ -17,6 +17,7 @@ export TEST="test"        #(used to export variables to child processes)
 export PATH=$PATH:/new/p  #(to add and export a new path)
 Flavio Copes. linux-commands-handbook (p. 138). (Function). Kindle Edition. Flavio Copes. linux-commands-handbook (p. 149). (Function). Kindle Edition. nmon                      #(menu for CPU, memory, disk, utilization and others)
 sudo lsof -i -P -n|grep LISTEN #(list of open ports in the computer)
+sudo lsof -i :7768        #(check what process is using port 7768)
 time ls -al               #(add to results how long the ls -l proceduce/command takes)
 alias hgrep="history|grep" #(create alias command; alias aliascommand gives the alias content)
   --other--
