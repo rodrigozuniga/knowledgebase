@@ -1,6 +1,7 @@
 
 ## **SYSTEM INFO**
 uname -a 
+uptime                   #(time system has been up and load aveages in the last 5m, 15m, etc.)
 free -h
 duf                       #(table formatted disk usage)
 du -h -s -c               #(total usage on current directory, -h: human, -s: summary, -c total)
@@ -417,6 +418,7 @@ Ports:
   21  : FTP
   22  : SSH
   25  : SMTP
+  53  : DNS
   80  : HTTP
   443 : HTTPS
   3306: MySQL
