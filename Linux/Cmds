@@ -220,6 +220,14 @@ type ls                    #(4 types: executable, shell built-in, shell function
 split -b [size] [filename] [prefix]   #(split file in smaller files, rejoin files with cat) 
 ranger                                #(cli interface to navigate directories and check and/or delete files)
 
+# **DISKS & PARTITIONS**
+new disk: partition it → put filesystem (mkfs) → mount it → persist it in /etc/fstab
+Inodes — every file has an inode with its metadata (permissions, owner, timestamps, size) and 
+  pointers to its data blocks. The filename is just a directory entry pointing to an inode.
+lsblk    #(list of partitions and disks -d, blocks refer to disks)
+
+
+
 # **COMPRESSION/ARCHIVE**
 gzip -r archive.zip files
 gunzip <archivename.zip> -d <dir> #(unzip to a certain directory)
