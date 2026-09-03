@@ -2,7 +2,7 @@
 ## **SYSTEM INFO**
 uname -a 
 uptime                   #(time system has been up and load aveages in the last 5m, 15m, etc.)
-free -h
+free -h                   #(free ram memory)
 duf                       #(table formatted disk usage)
 du -h -s -c               #(total usage on current directory, -h: human, -s: summary, -c total)
 ncdu ~                    #<directory name> (directories in decreasing disk usage)
@@ -221,6 +221,16 @@ find /path/to/search -type f -size +100M
 type ls                    #(4 types: executable, shell built-in, shell function and alias)
 split -b [size] [filename] [prefix]   #(split file in smaller files, rejoin files with cat) 
 ranger                                #(cli interface to navigate directories and check and/or delete files)
+
+First letter before permissions indicates the kind of element/object: 
+d — directory
+- — regular file (normal file, this is the most common)
+l — symbolic link (a pointer to another file/dir)
+c — character device (e.g. /dev/tty, /dev/null — byte-stream devices)
+b — block device (e.g. /dev/sda — disk-type devices)
+p — named pipe / FIFO (for inter-process communication)
+s — socket (also for process communication)
+
 
 # **DISKS & PARTITIONS**
 new disk: partition it → put filesystem (mkfs) → mount it → persist it in /etc/fstab
