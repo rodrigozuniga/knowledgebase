@@ -465,6 +465,11 @@ brew services restart <name>
 brew install mysql
 mysql -u root #(initial connection to mysql with no password
 
+
+# **PROJECT MANAGEMENT**
+
+RACI Matrix: #(R: responsible, A: accountable, C:consulted, I: informed)
+
 The four Scrum events, by purpose 
  — planning (pick the work), 
  - daily scrum (sync), 
