@@ -19,6 +19,7 @@ export TEST="test"        #(used to export variables to child processes)
 export PATH=$PATH:/new/p  #(to add and export a new path)
 sudo lsof -i -P -n|grep LISTEN #(list of open ports in the computer)
 sudo lsof -i :7768        #(check what process is using port 7768)
+sudo touch file1          #(creates file1 but the file belongs to root and not to the user creating it)
 time ls -al               #(add to results how long the ls -l proceduce/command takes)
 alias hgrep="history|grep" #(create alias command; alias aliascommand gives the alias content)
   --other--
@@ -61,7 +62,7 @@ curl -o <new_package_name> <package url> #(handle significantly more protocols t
 curl -v www.google.com #(run all stages: DNS, TCP, TLS,HTTP)
 status         #(firewall status by port)
 iptables                #(show rules to filter packages)
-sudo pfctl -s rules     #(macos: show rules to fileter packages)
+sudo pfctl -s rules     #(macos: show rules to filter packages)
 nslooup url             #(check DNS information)
 dig url                 #(check info about domain; dns; dig +short for ip only)
 dscacheutil -flushcache #(flush DNS cache; to use if site don't resolve)
@@ -163,7 +164,12 @@ $(( ))	Arithmetic Expansion	Performs math, returns result  | val=$((10/2))
 | (use output/left as input/right) 
 xargs (allows to put output on the right of the pipped to command)
 ls File*|xargs rm 
-2>&1 >file.log (the >& indicates that both 2/stderr and 1/stdoutput are file descriptors and not filenames; merges the output into 1)
+
+>& = "redirect this stream to that stream's destination"
+    #(1 is output stream and 2 is std error output)
+<command> > fileoutput 2>&1 #(redirects output2 to same place output1 is going to)
+<command> 2>&1 >fileoutput   #(redirects output2 to the prompt which is where output1 is going until it finds the redirect)
+
 echo "scale = 2; (16 + 63) / 5" | bc
 cat <<< filename (passes filename to the standard input for command cat) 
 bc <<< "scale=2; 1/2" (same as above)
