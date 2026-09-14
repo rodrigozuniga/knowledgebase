@@ -104,6 +104,7 @@ Broadcast: .255 (the top of a /24) is the broadcast address — not assignable t
 # !#:1 + tab (on the line refer to previous argument/flag, like a path to file or mkdir path; 0 refers to the command and 2,3...refers to 2nd or 3rd argument/flag)
 # ls -l /home/rzuniga/Documents/{bash_class,git_class,regex_class} (nesting arguments for a command)
 
+
 # **SYSTEM DIRECTORIES**
 # /     (Root)
 # /bin  (contains binary executable files)
@@ -155,6 +156,12 @@ trap 'echo -e "\n cntrl-c"' 2
 $( )	Command Substitution	Runs command, returns output   | cwd=$(pwd)
 $(( ))	Arithmetic Expansion	Performs math, returns result  | val=$((10/2))
 (( ))	Arithmetic Evaluation	Evaluates logic/math, no output| if ((i<10));
+
+
+# **EXPANSION**
+ls file*         #( * for any character including none)
+ls file[a-c]     #(filea, fileb or filec)
+ls file[1-3]     #(file1, file2 or file3)
 
 
 # **PIPPING**
@@ -257,6 +264,7 @@ tar -zcvf archive_name.tar.gz directory_name/     #(archive and compress full fo
 rsync -av /path/to/source/ /path/to/destination/  #(-a is recursive to all included dir, -v is verbose and show all copied files)
 split -b [size] [filename] [prefix]
 
+
 # **PACKAGE MANAGEMENT**
 sudo apt <packagename> (remove downloaded files)
 sudo apt update <packagename>
@@ -339,6 +347,7 @@ gretl                         #(time series package)
 gnu pspp                      #(stats package)
 jamovi                        #(stats package)
 jasp                          #(stats package)
+
 
 #** ARRAYS & ASSOCIATIVE ARRAYS**q
 arr=("apple" "banana" "cherry")     #(note no commas are used)
