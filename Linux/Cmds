@@ -1,7 +1,8 @@
 
 ## **SYSTEM INFO**
 uname -a 
-uptime                   #(time system has been up and load aveages in the last 5m, 15m, etc.)
+uptime                    #(time system has been up and load aveages in the last 5m, 15m, etc.)
+w                         #(what users are longed into the system and since when)
 free -h                   #(free ram memory)
 duf                       #(table formatted disk usage)
 du -h -s -c               #(total usage on current directory, -h: human, -s: summary, -c total)
@@ -493,7 +494,9 @@ The four Scrum events, by purpose
  - review (demo the product), 
  - retrospective (improve the process). The review-vs-retro distinction is often in the exam 
 
-
+# **DISASTER RECOVERY**
+ RPO (Recovery Point Objective): Measures acceptable data loss (how much data you lose)
+ RTO (Recovery Time Objective): How long it takes to get running again
 
 
 
