@@ -208,8 +208,9 @@ PS1='> '                #(change prompt display)
 rmdir           #(removes empty directories only)
 dirname         #(gets path without filename, removes last text after last /)
 basename        #(gets filename out of path)
+ls -d */        #(*/ gets only directories and -d output only the directories names and not their content)
 ls -al
-exa -al
+exa -al         #(fast version of ls written in rust)
 pwd
 touch
 mdir                    #(displays an mdos directory content)
@@ -218,6 +219,7 @@ stat <filename>         #(returns when file was last modified and when it was cr
 tree -df -L 3           #(graphic representation of directories and/or files at -L  3 levels)
 ln <filename>  <hard link to file> # (hard link to the file)
 rg -l                   #(rip grep; super search; -l only list files)
+groups rz               #(list of groups that rz belongs to)
 chmod +rwx <filename>   #(add read,write,execute to permissions for all groups)
 chown                   #(change ownership of file)
 umask                   #(sets the default permissions that get stripped from new files and directories, -S: print symbolically)
