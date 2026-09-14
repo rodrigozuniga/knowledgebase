@@ -23,6 +23,7 @@ sudo lsof -i :7768        #(check what process is using port 7768)
 sudo touch file1          #(creates file1 but the file belongs to root and not to the user creating it)
 time ls -al               #(add to results how long the ls -l proceduce/command takes)
 alias hgrep="history|grep" #(create alias command; alias aliascommand gives the alias content)
+chsh <username>           #editor to change default shell for a given <username>
   --other--
 cowsay mooo 
 sl            #(running train, ls mispelled)
@@ -146,7 +147,7 @@ seq -w 5000|parallel touch pfile{}.txt
 logger "a message"              #(put message in log file; message goes into /var/log/syslog)
 logger -t messageTag "message"  #(add initial tag to a message, helps filtering)
 
-nohup <command>                 #(in a remote session to run command even after you logout)
+nohup <command>                 #(in a remote session to run command after logout, nohup: no hangup signal)
 trap 'command_to_run' EXIT/DEBUG/ERR/1/2/3/9/15/20 #(trap event and run command_to_run)
 trap -l                         #(shows all the current traps)
 trap 'echo exiting ' EXIT
@@ -497,6 +498,7 @@ The four Scrum events, by purpose
 # **DISASTER RECOVERY**
  RPO (Recovery Point Objective): Measures acceptable data loss (how much data you lose)
  RTO (Recovery Time Objective): How long it takes to get running again
+ MTTR (Mean Time to Recovery)
 
 
 
