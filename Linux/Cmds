@@ -2,7 +2,7 @@
 ## **SYSTEM INFO**
 uname -a 
 uptime                    #(time system has been up and load aveages in the last 5m, 15m, etc.)
-w                         #(what users are longed into the system and since when)
+who /w                    #(what users are loged into the system and since when)
 free -h                   #(free ram memory)
 duf                       #(table formatted disk usage)
 du -h -s -c               #(total usage on current directory, -h: human, -s: summary, -c total)
@@ -29,14 +29,14 @@ cowsay mooo
 sl            #(running train, ls mispelled)
 asciiquarium  #(aquarium in terminal)
 espeak hello  #(make computer say hello)
-fortune       # random fortune message
+fortune       #(random fortune message)
 figlet word   #(display large banner with text/word)
 cmatrix       #(like the movie)
 hollywood     #(multiple screens with random output)
 
 # **DOCUMENTATION**
 whatis <command>
-whereis <command
+whereis <command>
 man <command>
 man -k <keyword>
 <command> --help
@@ -61,11 +61,11 @@ ssh -X                  #(X11 forwarding; ssh -Y might be more reliable because 
 scp/rsynch              #(copy files over SSH)
 ss                      #(sockets list)
 curl -o <new_package_name> <package url> #(handle significantly more protocols than wget)
-curl -v www.google.com #(run all stages: DNS, TCP, TLS,HTTP)
-status         #(firewall status by port)
+curl -v www.google.com  #(run all stages: DNS, TCP, TLS,HTTP)
+status                  #(firewall status by port)
 iptables                #(show rules to filter packages)
 sudo pfctl -s rules     #(macos: show rules to filter packages)
-nslooup url             #(check DNS information)
+nslookup url             #(check DNS information)
 dig url                 #(check info about domain; dns; dig +short for ip only)
 dscacheutil -flushcache #(flush DNS cache; to use if site don't resolve)
 arp-scan localnet       #(scan for other devices on the same network)
@@ -78,13 +78,13 @@ IP addresses:
 
 ipconfig getifaddr en0  #(get only the ipaddress)
 
-RANGE:	                           CIDR:             SIZE:              TYPICAL USE:
+PRIVATE IPs:	                      CIDR:             SIZE:              TYPICAL USE:
 10.0.0.0    –  10.255.255.255	   10.0.0.0/8	      ~16.7M addresses   	Large networks, cloud, corporate
 172.16.0.0  –  172.31.255.255	   172.16.0.0/12	  ~1M addresses	      Mid-size; Docker uses this by default
 192.168.0.0 –  192.168.255.255	 192.168.0.0/16	  ~65k addresses	    Home/small networks (most routers)
 
-RFC1918: Anything in them is yours to assign; they never route on the public internet.
-169.254.x.x — link-local (APIPA). A device gives itself one of these when it fails to get an IP from DHCP. Seeing it = "no DHCP." Never assign it manually.
+RFC1918: Anything in those ranges is yours to assign; they never route on the public internet.
+169.254.x.x — link-local (APIPA). A device gives itself one of these when fails to get an IP from DHCP. Seeing it = "no DHCP." Never assign it manually.
 127.0.0.1 — localhost, this machine only. Not for other devices.
 Reserve .1 — it's almost always the router/gateway.
 Broadcast: .255 (the top of a /24) is the broadcast address — not assignable to a device.
@@ -114,30 +114,31 @@ Broadcast: .255 (the top of a /24) is the broadcast address — not assignable t
 # /etc  (system wide configuration)
 # /dev  (virtual directory with device files for hardware)
 # /proc (virtual files generated in real time with kernel and running processe information)
-# /var  (stores variable data that changes frequently during system operation)
+# /var  (stores variable data changing frequently during system operation)
 # /tmp  (temporaty storage)
 # /usr  (unix sources resources of user-level applications)
 # /lib  (essential shared libraries)
 # /opt  (for third party software like google chrome)
 # /mnt & /media (mount point for external storage like usb drives and network drives)
 # /boot (files for boot process)
-# /sys (virtual file system with info about hardware and kernel information)
+# /sys  (virtual file system with info about hardware & kernel information)
 # /srv  (to store data for services provided by the system like web server data for a site)
 
 
 # **PROCESS MANAGEMENT**
-script.sh #(run script/job in the background)
-bg        #(check job number with jobs and do bg %<jobnum>)
-fg
-jobs 
-ps
-ps aux   #(all users, extended in decreasing order of CPU usage)
+script.sh                    #(run script/job in the background)
+bg                           #(check job number with jobs and do bg %<jobnum>)
+fg % pid                     #(bring job from the background to the foreground)
+jobs                         #(show current running jobs)
+ps                           #(show running process which include jobs)
+ps aux                       #(all users, extended in decreasing order of CPU usage)
 pstree
 top
-sudo iotop -uo rzuniga #(total disk read and disk write on first two lines)
-kill 
+sudo iotop -uo rzuniga       #(total disk read and disk write on first two lines)
+kill pid                     #(kill process but with orderly exit, default is value 15)               
+kill -9 pid                  #(kill process, signal cannot be captured and is immediatelly executed)
 killall
-history 5                #(^R for reverse history search, 5 for 5 last commands)
+history 5                    #(^R for reverse history search, 5 for 5 last commands)
 alias hgrep='history|grep'
 glances
 time <command>
@@ -161,9 +162,14 @@ $(( ))	Arithmetic Expansion	Performs math, returns result  | val=$((10/2))
 
 
 # **EXPANSION**
-ls file*         #( * for any character including none)
-ls file[a-c]     #(filea, fileb or filec)
-ls file[1-3]     #(file1, file2 or file3)
+ls file*            #( * for any character including none)
+ls file?            #( ? for exactly one character)
+ls file[a-c]        #(filea, fileb or filec)
+ls file[1-3]        #(file1, file2 or file3)
+ls file[!23]        #(or [^...])
+echo file{1,2,3}    #(expands with each of the values in bracket)
+echo file{1..5}     #(expand with each value within range)
+echo file{a..j}     #(expand with each value within range)
 
 
 # **PIPPING**
@@ -171,8 +177,10 @@ ls file[1-3]     #(file1, file2 or file3)
 # (as they run in subshells that inherit the environment
 > (redirect output)
 | (use output/left as input/right) 
+|& (passes both stdout and stderr.It's bash shorthand for 2>&1 |
 xargs (allows to put output on the right of the pipped to command)
 ls File*|xargs rm 
+ls | tee ls.txt |grep -n file
 
 >& = "redirect this stream to that stream's destination"
     #(1 is output stream and 2 is std error output)
