@@ -243,9 +243,11 @@ cmp file1 file2         #(compare files bits, if files are equal it returns noth
 locate /home/rzuniga/Documents .pdf
 find . -maxdepth 2 -type f -name "*.pdf"
 find /path/to/search -type f -size +100M
-type ls                    #(4 types: executable, shell built-in, shell function and alias)
+type ls                 #(4 types: executable, shell built-in, shell function and alias)
 split -b [size] [filename] [prefix]   #(split file in smaller files, rejoin files with cat) 
-ranger                                #(cli interface to navigate directories and check and/or delete files)
+ranger                  #(cli interface)
+sha256sum file.txt      #(generates hash from file)
+
 
 First letter before permissions indicates the kind of element/object: 
 d — directory
