@@ -187,6 +187,11 @@ ls | tee ls.txt |grep -n file
 <command> > fileoutput 2>&1 #(redirects output2 to same place output1 is going to)
 <command> 2>&1 >fileoutput   #(redirects output2 to the prompt which is where output1 is going until it finds the redirect)
 
+mkfifo mypipe        # create it
+ls -l mypipe
+prw-r--r-- 1 rodrigo rodrigo 0 ... mypipe
+# ↑ the "p" means it's a pipe, not a regular file
+
 echo "scale = 2; (16 + 63) / 5" | bc
 cat <<< filename (passes filename to the standard input for command cat) 
 bc <<< "scale=2; 1/2" (same as above)
